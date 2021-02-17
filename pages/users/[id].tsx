@@ -1,19 +1,21 @@
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import api from '../../src/services/api';
 
 type User = {
-  data: {
-    id: number;
-    avatar_url: string;
-    name: string;
-    bio: string;
-    public_repos: string;
-    followers: string;
-    following: string;
-  }
+  id: number;
+  avatar_url: string;
+  name: string;
+  bio: string;
+  public_repos: string;
+  followers: string;
+  following: string;
 }
 
-export default function User({ data }: User) {
+type Props = {
+  data: User;
+}
+
+export default function User({ data }: Props) {
   return (
     <div>
       <img src={data.avatar_url} alt="Avatar Github" width={200}/>
